@@ -1,0 +1,29 @@
+# Intuition
+The problem requires us to find pairs of indices (i,j) such that the elements at these indices are equal.
+My first thought was to iterate through the list and compare every element with the others that come after it.
+
+# Approach
+* Initialize counter to zero.
+* Use a nested loop structure to iterate through all possible pairs of indices.
+* For each pair of indices (i,j), check if the elements at these indices are equal.
+* Increment the count if the elements are equal
+* Return the value of count as the total number of identical pairs.
+
+# Complexity
+- Time complexity:
+Since I am using two nested loops to compare each element with every other element that comes after it, the time complexity is O(n^2)
+
+- Space complexity:
+The space complexity is O(1) as we only use a fixed amount of extra space for the count variable and the loop indices.
+
+# Code
+```
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        count = 0
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                if nums[i]==nums[j]:
+                    count += 1
+        return count
+```
