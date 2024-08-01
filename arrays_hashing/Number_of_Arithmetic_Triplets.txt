@@ -1,1 +1,44 @@
+# Intuition
+To solve the problem of finding arithmetic triplets in a list, the first thought is to find three indices i, j, and k such that i<j<k.
+The differences between the elements at these indices are equal to a given value diff, i.e., nums[j]−nums[i] == diff and nums[k]−nums[j]=diff.
+We iterate through the list and look for these conditions, counting the times they are satisfied.
 
+# Approach
+* Initialize the counter to zero.
+
+* Use three nested loops to select all possible combinations of indices i, j, and k such that i<j<k.
+The first loop iterates over the index i from 0 to len(nums)−3.
+The second loop iterates over the index j from i+1 to len(nums)−2.
+The third loop iterates over the index k from j+1 to len(nums)−1.
+
+* For each combination of i,j, and k:
+Check if nums[j]−nums[i]=diff and nums[k]−nums[j]=diff.
+
+* If both conditions are satisfied, increment the count.
+
+* Return the final count of valid triplets.
+
+# Complexity
+- Time complexity:
+The time complexity is O(n^3), where n is the number of elements in nums. We have three nested loops iterating over the array to find all possible combinations of triplets.
+
+- Space complexity:
+The space complexity is O(1)
+
+# Code
+```
+class Solution:
+    def arithmeticTriplets(self, nums: List[int], diff: int) -> int:
+        count = 0
+        for i in range(len(nums)-2):
+            # if (nums[i+1]-nums[i]) > diff: continue
+            for j in range(i+1, len(nums)-1):
+                if (nums[j]-nums[i]) < diff: continue
+                elif (nums[j]-nums[i]) == diff:
+                    for k in range(j+1, len(nums)):
+                        if (nums[k]-nums[j]) < diff: continue
+                        elif (nums[k]-nums[j]) == diff:
+                            count += 1
+        return count
+        
+```
