@@ -1,0 +1,26 @@
+# Intuition
+Sets automatically handle duplicates and allow for easy computation of differences between two collections.
+Thus, converting the lists to sets helps us quickly find the elements that are unique to each list.
+
+# Approach
+1) Convert Lists to Sets
+2) Find Set Differences
+3) Return the Result
+
+# Complexity
+- Time complexity:
+The time complexity is O(n+m), where n and m are the lengths of nums1 and nums2, respectively. 
+This is because converting each list to a set and performing set operations (like difference) are linear operations.
+
+- Space complexity:
+The space complexity is O(n+m) as well.
+
+# Code
+```
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        return [list(set(nums1) - set(nums2)), list(set(nums2) - set(nums1))]
+
+
+        
+```
